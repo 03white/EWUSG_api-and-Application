@@ -1,3 +1,0 @@
-D:/Pragram/C++/C++with_vscode/EWUSG_api/build/CMakeFiles/app.dir
-D:/Pragram/C++/C++with_vscode/EWUSG_api/build/CMakeFiles/edit_cache.dir
-D:/Pragram/C++/C++with_vscode/EWUSG_api/build/CMakeFiles/rebuild_cache.dir
