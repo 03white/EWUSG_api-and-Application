@@ -1,7 +1,7 @@
 #include"../../include/Array/Array.h"
 namespace EWUSG{
 
-Array::Array(int capacity=100):
+Array::Array(size_t capacity=100):
        capacity_(capacity),
        number_(0),
        maxLoadFactor_(0.7){
@@ -22,6 +22,7 @@ bool Array::emplace(int key,std::string val){
     }
     list=array_[pos];
     list->push_back(key,val);               //插入哈希表中
+    number_++;
     return true;
 }
 
@@ -42,9 +43,9 @@ bool Array::isBucketEmpty(int pos){
 }
 
 //计算最大素数
-int Array::caculateMaxPrime(){
-    int maxPrime=1;
-    for(int i=capacity_;i>=1;i--){
+size_t Array::caculateMaxPrime(){
+    size_t maxPrime=1;
+    for(size_t i=capacity_;i>=1;i--){
        bool flag=true;
        for(int j=2;j<i;j++){
           if(i%j==0){

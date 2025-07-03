@@ -9,12 +9,10 @@ DbLinkedList::DbLinkedList(){
        tail_->pre_=head_; 
 }
 
-
 DbLinkedList::~DbLinkedList(){
 
 
 }
-
 
 bool DbLinkedList::empty(){
     if(head_->next_==tail_)return true;
@@ -39,7 +37,6 @@ void DbLinkedList:: push_front(int key,std::string val){
     head_->next_=newNode;
 }
 
-
 bool DbLinkedList::find(int key){
     DbListNode*current=head_->next_;
     while(current!=tail_){
@@ -48,7 +45,6 @@ bool DbLinkedList::find(int key){
     }
     return false;
 }
-
 
 void DbLinkedList::makeEmpty(){
      DbListNode*del=head_->next_;
