@@ -1,18 +1,44 @@
 #include"../../include/Array/Array.h"
 namespace EWUSG{
 
-Array::Array(int capacity=100):capacity_(capacity),size_(0){
+Array::Array(int capacity=100):
+       capacity_(capacity),
+       number_(0),
+       maxLoadFactor_(0.7){
     this->array_=new DbLinkedList*[capacity_];
     this->prime_=this->caculateMaxPrime();   //计算当下最大的素数
 }
 
-bool Array::isElementEmpty(int pos){
-    if(array_[pos]==nullptr)return true;
-    else return false;
+Array::~Array(){
+
+
+}
+
+bool Array::emplace(int key,std::string val){
+    int pos=this->primeMode(key);           //计算“哈希桶”的下标
+    DbLinkedList*list=nullptr;
+    if(isBucketEmpty(pos)){                //如果当前“哈希桶”为空
+      array_[pos]=new DbLinkedList;         //创建一个空的“哈希桶”
+    }
+    list=array_[pos];
+    list->push_back(key,val);               //插入哈希表中
+    return true;
+}
+
+bool Array::find(int key){
+    int pos=this->primeMode(key);
+    DbLinkedList*list=array_[pos];
+    return list&&list->find(pos);          //两者都为true时，哈希表中存在该元素
 }
 
 int Array::primeMode(int key){
-    return key%prime_;    //通过 [除留余数法]来计算“哈希桶"的位置
+    return key%prime_;                     //通过 [除留余数法]来计算“哈希桶"的位置
+}
+
+//   判断“哈希桶”是否为空
+bool Array::isBucketEmpty(int pos){
+    if(array_[pos]==nullptr)return true;
+    else return false;
 }
 
 //计算最大素数
@@ -30,16 +56,7 @@ int Array::caculateMaxPrime(){
     }
 }
 
-bool Array::emplace(int key,std::string val){
-    int pos=this->primeMode(key);           //计算“哈希桶”的下标
-    DbLinkedList*list=nullptr;
-    if(isElementEmpty(pos)){                //如果当前“哈希桶”为空
-      array_[pos]=new DbLinkedList;         //创建一个空的“哈希桶”
-    }
-    list=array_[pos];
-    list->push_back(key,val);               //插入哈希表中
-    return true;
+double Array::caculateLoadFactor(){
+       return static_cast<double>(number_)/static_cast<double>(capacity_);
 }
-
-
 }
