@@ -2,11 +2,11 @@
 namespace EWUSG{
 
 Array::Array(size_t capacity=100):
-       capacity_(capacity),
-       number_(0),
-       maxLoadFactor_(0.7){
-    this->array_=new DbLinkedList*[capacity_];
-    this->prime_=this->caculateMaxPrime();   //计算当下最大的素数
+    capacity_(capacity),
+    number_(0),
+    maxLoadFactor_(0.7){
+    array_=new DbLinkedList*[capacity_];
+    prime_=this->caculateMaxPrime();   //计算当下最大的素数
 }
 
 Array::~Array(){
@@ -58,6 +58,6 @@ size_t Array::caculateMaxPrime(){
 }
 
 double Array::caculateLoadFactor(){
-       return static_cast<double>(number_)/static_cast<double>(capacity_);
+    return static_cast<double>(number_)/static_cast<double>(capacity_);
 }
 }

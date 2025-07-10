@@ -3,15 +3,16 @@
 namespace EWUSG{
 
 DbLinkedList::DbLinkedList(){
-       head_=new DbListNode;
-       tail_=new DbListNode;
-       head_->next_=tail_;
-       tail_->pre_=head_; 
+    head_=new DbListNode;
+    tail_=new DbListNode;
+    head_->next_=tail_;
+    tail_->pre_=head_; 
 }
 
 DbLinkedList::~DbLinkedList(){
-
-
+    clear();
+    delete head_;
+    delete tail_;    
 }
 
 bool DbLinkedList::empty(){

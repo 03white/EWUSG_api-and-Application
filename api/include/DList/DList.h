@@ -13,7 +13,7 @@ struct DbListNode{
 
 class DbLinkedList{
 public:
-   DbLinkedList(){}
+   DbLinkedList();
    ~DbLinkedList();
    bool empty();
    void push_back(int key,std::string val);
